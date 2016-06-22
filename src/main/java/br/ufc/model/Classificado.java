@@ -9,19 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Anuncio {
+public class Classificado {
 	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private Usuario autor;
-	private Categoria categoria;
 	private String titulo;
-	private Date data;
 	private String conteudo;
-	
+	private Float preco;
+	private String telefone;
 	public Long getId() {
 		return id;
 	}
@@ -34,29 +32,23 @@ public class Anuncio {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
-	}
-	public Usuario getAutor() {
-		return autor;
-	}
-	public void setAutor(Usuario autor) {
-		this.autor = autor;
-	}
 	public String getConteudo() {
 		return conteudo;
 	}
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
 	}
-	public Categoria getCategoria() {
-		return categoria;
+	public Float getPreco() {
+		return preco;
 	}
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setPreco(Float preco) {
+		this.preco = preco;
 	}
-	
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+		
 }
