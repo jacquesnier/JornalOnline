@@ -4,26 +4,42 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Pessoa {
 	
 	@Id
-	@Column(name = "id")
+	@Column(name = "pessoa_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String Nome;
-	private Papel papel;
-	private String descricao;
-	private String login;
-	private String senha;
-	private String email;
-	private String foto;
+	@OneToMany(mappedBy = "pessoa")
 	private List<PapelJornal> papeis;
+	
+	@NotEmpty
+	private String nome;
+	
+	@NotEmpty
+	private String descricao;
+	
+	@NotEmpty
+	private String login;
+	
+	@NotEmpty
+	private String senha;
+	
+	@NotEmpty
+	private String email;
+	
+	private String foto;	
+	
 	public Long getId() {
 		return id;
 	}
@@ -31,16 +47,10 @@ public class Pessoa {
 		this.id = id;
 	}
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 	public void setNome(String nome) {
-		Nome = nome;
-	}
-	public Papel getPapel() {
-		return papel;
-	}
-	public void setPapel(Papel papel) {
-		this.papel = papel;
+		nome = nome;
 	}
 	public String getDescricao() {
 		return descricao;

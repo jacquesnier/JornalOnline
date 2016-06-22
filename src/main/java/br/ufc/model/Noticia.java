@@ -10,22 +10,48 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Noticia {
 	
 	@Id
-	@Column(name = "id")
+	@Column(name = "noticia_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotEmpty
 	private String titulo;
+	
+	@NotEmpty
 	private Date data;
+	
+	@NotEmpty
 	private String subtitulo;
+	
+	@NotEmpty
 	private String conteudo;
+	
+	@NotEmpty
+	@ManyToOne
+	@JoinColumn(name="pessoa_id",
+			referencedColumnName="pessoa_id")
 	private Pessoa autor;
+	
+	@NotEmpty
+	@OneToOne
+	@JoinColumn(name="secao_id",
+			referencedColumnName="secao_id")
 	private Secao secao;
-	private List<Comentario> comentariosNoticia = new ArrayList<Comentario>();
+	
+	@OneToMany(mappedBy = "noticia")
+	private List<Comentario> comentarios;
+	
 	private String foto;
 	
 	public Long getId() {
@@ -77,11 +103,11 @@ public class Noticia {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	public List<Comentario> getComentariosNoticia() {
-		return comentariosNoticia;
+	public List<Comentario> getComentarios() {
+		return comentarios;
 	}
-	public void setComentariosNoticia(List<Comentario> comentariosNoticia) {
-		this.comentariosNoticia = comentariosNoticia;
+	public void setComentariosNoticia(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
 	}
 
 }

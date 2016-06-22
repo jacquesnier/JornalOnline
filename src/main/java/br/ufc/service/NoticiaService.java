@@ -15,7 +15,7 @@ public class NoticiaService {
 	@Autowired
 	private NoticiaRepository JornalRepository;
 	
-	public void addOrUpdate(Noticia noticia) {
+	/*public void addOrUpdate(Noticia noticia) {
 		JornalRepository.save(noticia);
 	}
 
@@ -38,5 +38,5 @@ public class NoticiaService {
 
 	public List<Noticia> getByCategoria(Secao categoria) {
 		return JornalRepository.findNoticiaByCategoria(categoria);
-	}
+	}*/
 }
