@@ -14,7 +14,7 @@ public class Comentario {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private Usuario autor;
+	private Pessoa autor;
 	private String conteudo;
 	
 	public Long getId() {
@@ -23,10 +23,10 @@ public class Comentario {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Usuario getAutor() {
+	public Pessoa getAutor() {
 		return autor;
 	}
-	public void setAutor(Usuario usuario) {
+	public void setAutor(Pessoa usuario) {
 		this.autor = autor;
 	}
 	public String getConteudo() {

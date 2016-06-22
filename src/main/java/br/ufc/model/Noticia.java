@@ -23,9 +23,10 @@ public class Noticia {
 	private Date data;
 	private String subtitulo;
 	private String conteudo;
-	private Usuario autor;
-	private Categoria categoria;
+	private Pessoa autor;
+	private Secao secao;
 	private List<Comentario> comentariosNoticia = new ArrayList<Comentario>();
+	private String foto;
 	
 	public Long getId() {
 		return id;
@@ -57,17 +58,24 @@ public class Noticia {
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
 	}
-	public Usuario getAutor() {
+	public Pessoa getAutor() {
 		return autor;
 	}
-	public void setAutor(Usuario autor) {
+	public void setAutor(Pessoa autor) {
 		this.autor = autor;
 	}
-	public Categoria getCategoria() {
-		return categoria;
+	
+	public Secao getSecao() {
+		return secao;
 	}
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setSecao(Secao secao) {
+		this.secao = secao;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	public List<Comentario> getComentariosNoticia() {
 		return comentariosNoticia;

@@ -1,5 +1,7 @@
 package br.ufc.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Usuario {
+public class Pessoa {
 	
 	@Id
 	@Column(name = "id")
@@ -15,11 +17,13 @@ public class Usuario {
 	private Long id;
 	
 	private String Nome;
-	private Tipo funcaoUsuario;
+	private Papel papel;
 	private String descricao;
 	private String login;
 	private String senha;
-	
+	private String email;
+	private String foto;
+	private List<PapelJornal> papeis;
 	public Long getId() {
 		return id;
 	}
@@ -32,11 +36,11 @@ public class Usuario {
 	public void setNome(String nome) {
 		Nome = nome;
 	}
-	public Tipo getFuncaoUsuario() {
-		return funcaoUsuario;
+	public Papel getPapel() {
+		return papel;
 	}
-	public void setFuncaoUsuario(Tipo funcaoUsuario) {
-		this.funcaoUsuario = funcaoUsuario;
+	public void setPapel(Papel papel) {
+		this.papel = papel;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -56,5 +60,23 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	public List<PapelJornal> getPapeis() {
+		return papeis;
+	}
+	public void setPapeis(List<PapelJornal> papeis) {
+		this.papeis = papeis;
+	}
+	
 }
