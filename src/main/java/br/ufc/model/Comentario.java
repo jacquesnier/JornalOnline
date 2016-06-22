@@ -5,17 +5,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Comentario {
 	
 	@Id
-	@Column(name = "id")
+	@Column(name = "comentario_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotEmpty
+	@ManyToOne
+	@JoinColumn(name="pessoa_id",
+			referencedColumnName="pessoa_id")
 	private Pessoa autor;
+	
+	@NotEmpty
 	private String conteudo;
+	
+	@ManyToOne
+	@JoinColumn(name="noticia_id")
+	private Noticia noticia;
 	
 	public Long getId() {
 		return id;

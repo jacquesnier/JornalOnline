@@ -8,18 +8,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Classificado {
 	
 	@Id
-	@Column(name = "id")
+	@Column(name = "classificado_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotEmpty
 	private String titulo;
+	
+	@NotEmpty
 	private String conteudo;
+	
+	@NotEmpty
 	private Float preco;
+	
 	private String telefone;
+	
 	public Long getId() {
 		return id;
 	}
