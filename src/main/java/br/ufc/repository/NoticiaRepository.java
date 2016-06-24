@@ -5,9 +5,8 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.ufc.model.Comentario;
-import br.ufc.model.Secao;
 import br.ufc.model.Noticia;
+import br.ufc.model.Secao;
 
 @Repository
 public interface NoticiaRepository extends CrudRepository<Noticia, Long> {
