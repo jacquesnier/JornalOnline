@@ -45,5 +45,4 @@ public class NoticiaService {
 		noticia.getComentarios().add(comentario);
 		noticiaRepository.save(noticia);
 	}
-	
 }
