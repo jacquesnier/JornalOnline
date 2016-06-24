@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.ufc.model.Comentario;
 import br.ufc.model.Secao;
 import br.ufc.model.Noticia;
 import br.ufc.repository.NoticiaRepository;
@@ -13,30 +14,36 @@ import br.ufc.repository.NoticiaRepository;
 public class NoticiaService {
 
 	@Autowired
-	private NoticiaRepository JornalRepository;
+	private NoticiaRepository noticiaRepository;
 	
-	/*public void addOrUpdate(Noticia noticia) {
-		JornalRepository.save(noticia);
+	public void addOrUpdate(Noticia noticia) {
+		noticiaRepository.save(noticia);
 	}
 
 	public List<Noticia> list() {
-		return (List<Noticia>) JornalRepository.findAll();
+		return (List<Noticia>) noticiaRepository.findAll();
 	}
 
-	public void delete(Integer id) {
-		if (JornalRepository.findOne(id) != null)
-			JornalRepository.delete(id);
+	public void delete(Long id) {
+		if (noticiaRepository.findOne(id) != null)
+			noticiaRepository.delete(id);
 	}
 
-	public Noticia get(Integer id) {
-		return JornalRepository.findOne(id);
+	public Noticia getNoticia(Long id) {
+		return noticiaRepository.findOne(id);
 	}
 
-	public List<Noticia> getByName(String nome) {
-		return JornalRepository.findNoticiaByNome(nome);
+	public List<Noticia> getByNome(String nome) {
+		return noticiaRepository.findNoticiaByNome(nome);
 	}
 
-	public List<Noticia> getByCategoria(Secao categoria) {
-		return JornalRepository.findNoticiaByCategoria(categoria);
-	}*/
+	public List<Noticia> getBySecao(Secao secao) {
+		return noticiaRepository.findNoticiaBySecao(secao);
+	}
+	
+	public void addComentario (Comentario comentario, Noticia noticia){
+		noticia.getComentarios().add(comentario);
+		noticiaRepository.save(noticia);
+	}
+	
 }
