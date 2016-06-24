@@ -7,4 +7,5 @@ import br.ufc.model.Oferta;
 
 public interface OfertaRepository extends CrudRepository<Oferta, Long> {
 	public void addClassificado (Classificado classificado, Oferta oferta);
+	public Oferta findOfertaByClassificacao (Classificado classificado);
 }
