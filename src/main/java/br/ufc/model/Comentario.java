@@ -40,7 +40,7 @@ public class Comentario {
 	public Pessoa getAutor() {
 		return autor;
 	}
-	public void setAutor(Pessoa usuario) {
+	public void setAutor(Pessoa autor) {
 		this.autor = autor;
 	}
 	public String getConteudo() {
