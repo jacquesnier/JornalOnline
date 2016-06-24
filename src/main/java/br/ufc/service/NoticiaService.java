@@ -29,7 +29,7 @@ public class NoticiaService {
 			noticiaRepository.delete(id);
 	}
 
-	public Noticia getNoticia(Long id) {
+	public Noticia get(Long id) {
 		return noticiaRepository.findOne(id);
 	}
 

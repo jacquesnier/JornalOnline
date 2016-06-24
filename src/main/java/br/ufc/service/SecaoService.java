@@ -3,10 +3,12 @@ package br.ufc.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.ufc.model.Secao;
 import br.ufc.repository.SecaoRepository;
 
+@Service
 public class SecaoService {
 	
 	@Autowired
