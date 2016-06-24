@@ -52,4 +52,11 @@ public class Oferta {
 		this.valor = valor;
 	}
 	
+	public Classificado getClassificado() {
+		return classificado;
+	}
+	public void setClassificado(Classificado classificado) {
+		this.classificado = classificado;
+	}
+	
 }
