@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.ufc.model.Noticia;
 import br.ufc.model.Secao;
 import br.ufc.repository.SecaoRepository;
 
@@ -30,4 +31,5 @@ public class SecaoService {
 	public Secao get(Long id) {
 		return secaoRepository.findOne(id);
 	}
+	
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.ufc.model.Secao;
+import br.ufc.service.NoticiaService;
 import br.ufc.service.SecaoService;
 
 @Controller
@@ -17,9 +18,13 @@ public class SecaoController {
 	@Autowired
 	SecaoService secaoService;
 	
+	@Autowired
+	NoticiaService noticiaService;
+	
 	// criando constante referenciando caminho da pagina html
 	private final static String TEMPLATE_ADDSECAO = "secao/add_or_edit";
 	private final static String TEMPLATE_LISTASECAO = "secao/listar";
+	private final static String TEMPLATE_LISTANOTICIAS = "secao/listanoticias";
 	
 	// chamar pagina secao, atenção para recebimento do model
 	@RequestMapping(value="/add", method = RequestMethod.GET)
@@ -60,5 +65,16 @@ public class SecaoController {
 	public String listarSecao(Model model){
 		model.addAttribute("listasecao", secaoService.list());
 		return TEMPLATE_LISTASECAO;
+	}
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public String listarNoticiasSecao(Model model, @PathVariable Long id){
+		Secao secao = secaoService.get(id);
+		if(secao!=null){
+		model.addAttribute("listanoticia", noticiaService.getNoticiasBySecao(secao));
+		return TEMPLATE_LISTANOTICIAS;
+		}
+		return "redirect:/secao/list";
+		
 	}
 }

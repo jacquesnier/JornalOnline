@@ -1,7 +1,7 @@
 package br.ufc.model;
 
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -27,7 +30,7 @@ public class Noticia {
 	@NotEmpty
 	private String titulo;
 	
-	@NotEmpty
+	@NotNull
 	private Date data;
 	
 	@NotEmpty
@@ -36,13 +39,13 @@ public class Noticia {
 	@NotEmpty
 	private String conteudo;
 	
-	@NotEmpty
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="pessoa_id",
 			referencedColumnName="pessoa_id")
 	private Pessoa autor;
 	
-	@NotEmpty
+	@NotNull
 	@OneToOne
 	@JoinColumn(name="secao_id",
 			referencedColumnName="secao_id")

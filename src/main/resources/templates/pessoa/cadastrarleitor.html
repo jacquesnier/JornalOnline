@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Adicionar ou Alterar Noticia</title>
+</head>
+<body>
+	<form th:action="@{/pessoa/leitor/add}" method="post" th:object="${leitor}">
+<!-- hidden oculta id na tela, e serve para não perder a referencia do id na hora de editar-->
+		<input type="hidden" th:field="*{id}"/> <br/>
+		<input type="text" th:field="*{nome}" placeholder="Nome"/> <br/>
+		<input type="text" th:field="*{email}" placeholder="Email"/> <br/>
+		<textarea rows="20" cols="20" th:field="*{descricao}" placeholder="descrição"></textarea> <br/>
+		<input type="text" th:field="*{login}" placeholder="Login"/> <br/>
+		<input type="text" th:field="*{senha}" placeholder="Senha"/> <br/>
+		<input type="submit" value="enviar"/>
+	</form>
+</body>
+</html>
