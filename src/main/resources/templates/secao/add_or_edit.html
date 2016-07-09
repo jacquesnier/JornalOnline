@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>seção</title>
+</head>
+<body>
+	<form th:action="@{/secao/add}" method="post" th:object="${secao}">
+<!-- hidden oculta id na tela, e serve para não perder a referencia do id na hora de editar-->
+		<input type="hidden" th:field="*{id}"/>
+		<input type="text" th:field="*{titulo}" />
+		<textarea rows="20" cols="20" th:field="*{descricao}"></textarea>
+		<input type="submit" value="enviar"/>
+	</form>
+</body>
+</html>
