@@ -33,6 +33,7 @@ public class NoticiaController {
 	
 	private final static String TEMPLATE_ADDNOTICIA = "noticia/add_or_edit";
 	private final static String TEMPLATE_LISTANOTICIA = "noticia/list";
+	private final static String TEMPLATE_NOTICIA = "noticia/noticia";
 	
 	@RequestMapping(value="/add", method = RequestMethod.GET)
 	public String addNoticia(Model model){
@@ -87,4 +88,11 @@ public class NoticiaController {
 		}
 		return TEMPLATE_ADDNOTICIA;
 	}
+	
+	@RequestMapping(value="/{id_noticia}", method = RequestMethod.GET)
+	public String getNoticia (Model model, @PathVariable Long id_noticia){
+		model.addAttribute("noticia", noticiaService.get(id_noticia));
+		return TEMPLATE_NOTICIA;
+	}
+	
 }

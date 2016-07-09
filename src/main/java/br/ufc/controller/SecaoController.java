@@ -75,6 +75,5 @@ public class SecaoController {
 		return TEMPLATE_LISTANOTICIAS;
 		}
 		return "redirect:/secao/list";
-		
 	}
 }

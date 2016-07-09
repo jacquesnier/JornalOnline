@@ -21,6 +21,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<materialize.version>0.97.6</materialize.version>
+		<font.awesome.version>4.6.3</font.awesome.version>
+		<jquery.version>2.2.4</jquery.version>
 	</properties>
 
 	<dependencies>
@@ -51,6 +54,23 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<version>1.3.6.RELEASE</version>
+		</dependency>
+
+		<!-- Webjars -->
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>materialize</artifactId>
+			<version>${materialize.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${jquery.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>${font.awesome.version}</version>
 		</dependency>
 
 	</dependencies>
