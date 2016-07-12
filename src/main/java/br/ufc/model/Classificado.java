@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -22,7 +23,7 @@ public class Classificado {
 	@NotEmpty
 	private String conteudo;
 	
-	@NotEmpty
+	@NotNull
 	private Float preco;
 	
 	private String telefone;
@@ -56,6 +57,5 @@ public class Classificado {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-		
+	}		
 }

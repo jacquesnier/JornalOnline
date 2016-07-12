@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Jornal o Gordo</title>
+
+  <!-- CSS  -->
+<link th:href="@{/webjars/font-awesome/4.6.3/css/font-awesome.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/materialize/0.97.6/bin/materialize.css}"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" />
+</head>
+<body>
+  <nav class=" light-blue darken-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">Jornal o Gordo</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Editor Admin</a></li>
+        <li class="active"><a href="#">Logout</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12">
+          <h2>Cadastro Notícia</h2>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <br/>
+        <div class="col s12 m12">
+          <form class="col s12" enctype="multipart/form-data" th:action="@{/noticia/add}" method="post" th:object="${noticia}">
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="Digite o seu nome" id="first_name" type="text" class="validate" th:field="*{titulo}" />
+                <label for="first_name">Titulo</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="subtitulo" type="text" class="validate" th:field="*{subtitulo}" />
+                <label for="subtitulo">Subtitulo</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="conteudo" type="text" class="validate materialize-textarea" th:field="*{conteudo}"> </textarea>
+                <label for="conteudo">Conteúdo</label>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col s12 m6">
+                <div class="input-field col s12">
+                  <select name="id_secao" >
+                    <option th:each="secao : ${listasecao}" th:text="${secao.titulo}" th:value="${secao.id}"></option>
+                  </select>
+                  <label>Selecionar Seção</label>
+                </div>
+              </div>
+
+              <div class="col s12 m6">
+                <div class="file-field input-field">
+                  <div class="btn">
+                    <span>Adicionar Imagem</span>
+                    <input type="file" name="foto_noticia"/>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br/>
+            <br/>
+            <div class="row">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <br/><br/>
+
+      <div class="section">
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Entre em contato conosco</h5>
+          <ul>
+            <li><a class="white-text" href="https://www.facebook.com/jacques.nier">Facebook</a></li>
+            <li><a class="white-text" href="#!">jacquesnier@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Desenvolvido por <a class="orange-text text-lighten-3" href="http://github.com/jacquesnier">Jacques Nier</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.js"></script>
+	<script src="js/init.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script> 
+	
+  <script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+  </script>
+</body>
+
+</html>

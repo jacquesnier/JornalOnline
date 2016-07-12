@@ -36,4 +36,8 @@ public class PessoaService {
 	public Pessoa getPessoaByEmail(String email){
 		return pessoaRepository.findPessoaByEmail(email);
 	}
+	
+	public Pessoa getPessoaByLoginAndSenha(String login, String senha){
+		return pessoaRepository.findPessoaByLoginAndSenha(login, senha);
+	}
 }

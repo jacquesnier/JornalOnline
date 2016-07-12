@@ -22,9 +22,9 @@ public class SecaoController {
 	NoticiaService noticiaService;
 	
 	// criando constante referenciando caminho da pagina html
-	private final static String TEMPLATE_ADDSECAO = "secao/add_or_edit";
+	private final static String TEMPLATE_ADDSECAO = "secao/cadastro_secao";
 	private final static String TEMPLATE_LISTASECAO = "secao/listar";
-	private final static String TEMPLATE_LISTANOTICIAS = "secao/listanoticias";
+	private final static String TEMPLATE_LISTANOTICIAS = "secao/secao";
 	
 	// chamar pagina secao, atenção para recebimento do model
 	@RequestMapping(value="/add", method = RequestMethod.GET)
@@ -36,7 +36,7 @@ public class SecaoController {
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String addSecao(Secao secao){
 		secaoService.addOrUpdate(secao);
-		return "redirect:/secao/list";
+		return "redirect:/";
 	}
 	//@PathVariable serve para pegar o atributo que eu passei na url
 	// verifico se é nulo vou para a pagina de add, senao atualizo a pagina carregando objeto
@@ -72,6 +72,7 @@ public class SecaoController {
 		Secao secao = secaoService.get(id);
 		if(secao!=null){
 		model.addAttribute("listanoticia", noticiaService.getNoticiasBySecao(secao));
+		model.addAttribute("secao", secao);
 		return TEMPLATE_LISTANOTICIAS;
 		}
 		return "redirect:/secao/list";

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Jornal o Gordo</title>
+
+  <!-- CSS  -->
+  <link th:href="@{/webjars/font-awesome/4.6.3/css/font-awesome.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/materialize/0.97.6/bin/materialize.css}"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"/>
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class=" light-blue darken-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" th:href="@{/}" class="brand-logo center">Jornal o Gordo</a>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <!-- NAVBAR DA NAVEGACAO-->
+  <nav class="indigo darken-1">
+    <div class="nav-wrapper">
+      <div class="col s12 center">
+        <a href="#!" class="breadcrumb center">Classificados</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <!--   Icon Section   -->
+
+      <!--Classificado-->
+      <div class="row" th:if="${not #lists.isEmpty(listaclassificado)}">
+        <div class="col s12 m4" th:each="classificado: ${listaclassificado}">
+          <div class="card large">
+            <div class="card-image waves-effect waves-block waves-light">
+               <img style="width:300px; height:150px;" class="activator" src="http://www.somclub.com.br/wp-content/uploads/2015/04/violao-background1.jpg" />
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4" th:text="${classificado.titulo}"><i class="material-icons right">more_vert</i></span>
+              <p th:text="'Preço: ' + ${classificado.preco}"><a href=""></a></p>
+              <form th:action="@{/oferta/add}" method="POST" th:object="${oferta}">
+	              <input type="hidden" th:value="${classificado.id}" name="id_classificado"/>
+	              <input type="text" name="oferta" th:if="${pessoa}" th:field="*{valor}"/> <br/>
+	              <button class="btn waves-effect waves-light" type="submit" name="action" th:if="${pessoa}">Ofertar
+	                <i class="material-icons right">send</i>
+	              </button>
+              </form>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4" th:text="${classificado.titulo}"><i class="material-icons right">close</i></span>
+              <p th:text="${classificado.conteudo}"></p>
+              <p th:text="'Melhor Oferta: ' + ${oferta.valor}"></p>
+              <p th:text="'Autor: ' + ${oferta.autor.nome}"></p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- -->
+    </div>
+  </div>
+
+  <footer class="page-footer indigo darken-1">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Entre em contato conosco</h5>
+          <ul>
+            <li><a class="white-text" href="https://www.facebook.com/jacques.nier">Facebook</a></li>
+            <li><a class="white-text" href="#!">jacquesnier@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Desenvolvido por <a class="orange-text text-lighten-3" href="http://github.com/jacquesnier">Jacques Nier</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.js"></script>
+  <script src="js/init.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script> 
+  <script>
+
+  $(document).ready(function(){
+    $('.modal-trigger').leanModal();
+  });
+
+  </script>
+</body>
+</html>

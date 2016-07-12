@@ -8,8 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Oferta {
@@ -19,13 +18,13 @@ public class Oferta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotEmpty
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="pessoa_id",
 			referencedColumnName="pessoa_id")
 	private Pessoa autor;
 	
-	@NotEmpty
+	@NotNull
 	private Float valor;
 	
 	@OneToOne

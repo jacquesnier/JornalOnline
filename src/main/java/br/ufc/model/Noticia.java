@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import javax.persistence.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity

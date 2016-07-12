@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+</head>
+<body>
+<table class="table" th:if="${noticia}">
+  <tr>
+  	<th>Id</th>
+    <th>Titulo</th>
+    <th>Data</th>
+    <th>Subtitulo</th>
+    <th>Secao</th>
+  </tr>
+  <tr>
+    <td th:text="${noticia.id}"></td>    <br/>
+    <td th:text="${noticia.titulo}"></td> <br/>
+    <td th:text="${noticia.data}"></td> <br/>
+    <td th:text="${noticia.subtitulo}"></td> <br/>
+    <td th:text="${noticia.autor.nome}"></td> <br/>
+    <td th:text="${noticia.secao.titulo}"></td> <br/>
+    <td th:text="${noticia.conteudo}"></td>
+  </tr>
+  </table>
+</body>
+</html>
