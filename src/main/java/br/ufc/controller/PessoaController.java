@@ -31,7 +31,7 @@ public class PessoaController {
 	PessoaService pessoaService;
 	
 	@Autowired
-	PapelJornalService pJService;
+	PapelJornalService papelJornalService;
 	
 	@Autowired
 	NoticiaService noticiaService;
@@ -50,7 +50,7 @@ public class PessoaController {
 	@RequestMapping(value="/jornalista/add", method = RequestMethod.POST)
 	public String addJornalista(@RequestParam(value = "foto_pessoa", required = false) MultipartFile foto_pessoa,
 			Pessoa jornalista){
-		Pessoa pessoa = pessoaService.getPessoaByEmail(jornalista.getEmail());
+		Pessoa pessoa = pessoaService.getPessoaByLogin(jornalista.getLogin());
 		String foto = null;
 		if(pessoa!=null){
 			if(!pessoa.isJornalista()){
@@ -66,7 +66,7 @@ public class PessoaController {
 					}
 				}
 				pessoa.setFoto(foto);
-				pJService.addOrUpdate(pessoa, Papel.JORNALISTA);
+				papelJornalService.addOrUpdate(pessoa, Papel.JORNALISTA);
 				return "redirect:/";	
 			}else{
 				return "redirect:/";
@@ -85,7 +85,7 @@ public class PessoaController {
 			}
 			jornalista.setFoto(foto);
 			pessoaService.addOrUpdate(jornalista);
-			pJService.addOrUpdate(jornalista, Papel.JORNALISTA);
+			papelJornalService.addOrUpdate(jornalista, Papel.JORNALISTA);
 			return "redirect:/";
 		}
 	}
@@ -99,7 +99,7 @@ public class PessoaController {
 	@RequestMapping(value="/leitor/add", method = RequestMethod.POST)
 	public String addLeitor(@RequestParam(value = "foto_pessoa", required = false) MultipartFile foto_pessoa, 
 			Pessoa leitor){
-		Pessoa pessoa = pessoaService.getPessoaByEmail(leitor.getEmail());
+		Pessoa pessoa = pessoaService.getPessoaByLogin(leitor.getLogin());
 		String foto = null;
 
 		if(pessoa!=null){
@@ -117,7 +117,7 @@ public class PessoaController {
 				}
 				System.out.println(foto);
 				pessoa.setFoto(foto);
-				pJService.addOrUpdate(pessoa, Papel.LEITOR);
+				papelJornalService.addOrUpdate(pessoa, Papel.LEITOR);
 				return "redirect:/";
 			}else{
 				return "redirect:/";
@@ -136,7 +136,7 @@ public class PessoaController {
 			}
 			leitor.setFoto(foto);
 			pessoaService.addOrUpdate(leitor);
-			pJService.addOrUpdate(leitor, Papel.LEITOR);
+			papelJornalService.addOrUpdate(leitor, Papel.LEITOR);
 			return "redirect:/";
 		}
 	}

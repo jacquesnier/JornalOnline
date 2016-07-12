@@ -20,12 +20,12 @@
 
 	<nav class=" light-blue darken-1" role="navigation">
 		<div class="nav-wrapper container">
-			<a id="logo-container" href="@{/}" class="brand-logo center">Jornal
+			<a id="logo-container" th:href="@{/}" class="brand-logo center">Jornal
 				o Gordo</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a class="modal-trigger active" href="#modal1">Editor
 						Admin</a></li>
-				<li><a href="#">Logout</a></li>
+				<li><a th:href="@{/logout}">Logout</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
@@ -83,25 +83,20 @@
 	</div>
 
 
-
 	<div class="container">
-		<div class="fixed-action-btn horizontal click-to-toggle"
-			style="bottom: 45px; right: 24px;">
-			<a class="btn-floating btn-large red"> <i class="material-icons">menu</i>
+		<div class="fixed-action-btn horizontal"
+			style="bottom: 50px; right: 24px;">
+			<a class="btn-floating btn-large teal accent-3"> <i class="material-icons">menu</i>
 			</a>
 			<ul>
-				<li><a class="btn-floating red btn tooltipped"
-					data-position="bottom" data-delay="50"
-					data-tooltip="Cadastrar Jornalista"
-					th:href="@{/pessoa/jornalista/add}"><i class="material-icons">supervisor_account</i></a></li>
+				<li><a class="btn-floating red btn tooltipped" data-position="bottom" data-delay="50"
+					data-tooltip="Cadastrar Jornalista" th:href="@{/pessoa/jornalista/add}"><i class="material-icons">supervisor_account</i></a></li>
 				<li><a class="btn-floating green btn tooltipped"
 					data-position="bottom" data-delay="50"
-					data-tooltip="Cadastrar Classificado"
-					th:href="@{/classificado/add}"><i class="material-icons">library_books</i></a></li>
+					data-tooltip="Cadastrar Classificado" th:href="@{/classificado/add}"><i class="material-icons">library_books</i></a></li>
 				<li><a class="btn-floating yellow btn tooltipped"
 					data-position="bottom" data-delay="50"
-					data-tooltip="Cadastrar Seção" th:href="@{/secao/add}"><i
-						class="material-icons">list</i></a></li>
+					data-tooltip="Cadastrar Seção" th:href="@{/secao/add}"><i class="material-icons">list</i></a></li>
 			</ul>
 		</div>
 
@@ -154,11 +149,18 @@
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="js/materialize.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.js"></script>
 	<script src="js/init.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('.modal-trigger').leanModal();
+		});
+
+		$(document).ready(function() {
+			$('select').material_select();
 		});
 	</script>
 </body>

@@ -151,7 +151,7 @@
 
 
 	<!-- COMENTÁRIOS-->
-	<div class="container" th:if="${pessoa}">
+	<div class="container">
 		<div class="section">
 			<div class="row" th:if="${not #lists.isEmpty(listacomentarios)}">
 
@@ -166,7 +166,7 @@
 				</ul>
 			</div>
 
-			<div class="row">
+			<div class="row" th:if="${pessoa}">
 				<form class="col s12 m12" th:action="@{/comentario/add}" method="post" th:object="${comentario}">
 					<input type="hidden" th:value="${noticia.id}" name="id_noticia"/>
 					<div class="row">

@@ -1,5 +1,7 @@
 package br.ufc.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,16 +29,32 @@ public class OfertaController {
 	OfertaService ofertaService;
 	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public String addOferta(Oferta oferta, @RequestParam Long id_classificado){
+	public String addOferta(HttpSession session, Oferta oferta, @RequestParam Long id_classificado){
 		Classificado classificado = classificadoService.get(id_classificado);
-		Pessoa pessoa = pessoaService.get(3L);
-		if(classificado!=null && pessoa!=null && pessoa.isLeitor()){
-			oferta.setAutor(pessoa);
-			oferta.setClassificado(classificado);
-			ofertaService.addOrUpdate(oferta);
-			return "redirect:/classificado/"+id_classificado;
-		}	
-		return "redirect:/classificado/"+id_classificado;
+		Pessoa pessoa = (Pessoa) session.getAttribute("PESSOA_LOGADA");
+		
+		if(classificado!=null && pessoa!=null && pessoa.isLeitor() && !pessoa.isJornalista()){
+			if(classificado.getMelhorOferta() != null){
+				if(oferta.getValor() > classificado.getMelhorOferta().getValor()){
+					Oferta ofertaAux = classificado.getMelhorOferta();
+					ofertaAux.setAutor(pessoa);
+					ofertaAux.setClassificado(classificado);
+					ofertaAux.setValor(oferta.getValor());
+					ofertaService.addOrUpdate(ofertaAux);		
+					return "redirect:/classificado/";
+				}
+			}else if(oferta.getValor() > classificado.getPreco()){
+				oferta.setAutor(pessoa);
+				oferta.setClassificado(classificado);
+				ofertaService.addOrUpdate(oferta);		
+				return "redirect:/classificado/";
+			}else{
+				return "redirect:/classificado/";
+			}
+			
+			return "redirect:/classificado/";
+		}
+		return "redirect:/classificado/";
 	}
 
 }

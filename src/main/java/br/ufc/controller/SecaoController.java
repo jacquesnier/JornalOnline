@@ -38,17 +38,6 @@ public class SecaoController {
 		secaoService.addOrUpdate(secao);
 		return "redirect:/";
 	}
-	//@PathVariable serve para pegar o atributo que eu passei na url
-	// verifico se é nulo vou para a pagina de add, senao atualizo a pagina carregando objeto
-	@RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
-	public String updateSecao(Model model, @PathVariable Long id){
-		Secao secao = secaoService.get(id);
-		if(secao!=null){
-			model.addAttribute("secao", secao);
-			return TEMPLATE_ADDSECAO;
-		} 
-		return "redirect:/secao/list";
-	} 
 	
 	@RequestMapping(value="/excluir/{id}", method = RequestMethod.GET)
 	public String excluirSecao(@PathVariable Long id){
@@ -71,8 +60,9 @@ public class SecaoController {
 	public String listarNoticiasSecao(Model model, @PathVariable Long id){
 		Secao secao = secaoService.get(id);
 		if(secao!=null){
-		model.addAttribute("listanoticia", noticiaService.getNoticiasBySecao(secao));
-		model.addAttribute("secao", secao);
+			model.addAttribute("listanoticia", noticiaService.getNoticiasBySecao(secao));
+			System.out.println(noticiaService.getNoticiasBySecao(secao).size());
+			model.addAttribute("secao", secao);
 		return TEMPLATE_LISTANOTICIAS;
 		}
 		return "redirect:/secao/list";

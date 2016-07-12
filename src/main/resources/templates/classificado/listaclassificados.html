@@ -59,8 +59,8 @@
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4" th:text="${classificado.titulo}"><i class="material-icons right">close</i></span>
               <p th:text="${classificado.conteudo}"></p>
-              <p th:text="'Melhor Oferta: ' + ${oferta.valor}"></p>
-              <p th:text="'Autor: ' + ${oferta.autor.nome}"></p>
+              <p th:text="${classificado.melhorOferta != null} ? ${classificado.melhorOferta.valor} : 'Nenhuma Oferta'">Nenhuma Oferta</p>
+              <p th:text="${classificado.melhorOferta != null} ? ${classificado.melhorOferta.autor.nome} : 'Nenhuma Oferta'">Nenhuma Oferta</p>
             </div>
           </div>
         </div>

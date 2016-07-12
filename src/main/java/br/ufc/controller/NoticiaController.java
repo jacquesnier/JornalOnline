@@ -1,13 +1,11 @@
 package br.ufc.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Date;
 
 import javax.servlet.ServletContext;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.apache.commons.io.FileUtils;
 
 import br.ufc.model.Comentario;
 import br.ufc.model.Noticia;
@@ -96,28 +93,19 @@ public class NoticiaController {
 				noticia.setSecao(secao);
 				noticiaService.addOrUpdate(noticia);
 			}
-			return "redirect:/noticia/list";
+			return "redirect:/pessoa/jornalista/gerenciador";
 		}
 		return "redirect:/noticia/list";
-	}
-
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String updateNoticia(Model model, @PathVariable Long id) {
-		Noticia noticia = noticiaService.get(id);
-		if (noticia != null) {
-			model.addAttribute("noticia", noticia);
-			return TEMPLATE_ADDNOTICIA;
-		}
-		return "redirect:noticia/list";
 	}
 
 	@RequestMapping(value = "/excluir/{id}", method = RequestMethod.GET)
 	public String excluirNoticia(@PathVariable Long id) {
 		System.out.println("passou");
 		Noticia noticia = noticiaService.get(id);
+		Secao secao = noticia.getSecao();
 		if (noticia != null) {
 			noticiaService.delete(id);
-			return "redirect:/noticia/list";
+			return "redirect:/secao/"+secao.getId();
 		}
 		return "redirect:/noticia/list";
 	}

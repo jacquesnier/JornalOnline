@@ -33,8 +33,8 @@ public class PessoaService {
 		return pessoaRepository.findOne(id);
 	}
 	
-	public Pessoa getPessoaByEmail(String email){
-		return pessoaRepository.findPessoaByEmail(email);
+	public Pessoa getPessoaByLogin(String login){
+		return pessoaRepository.findPessoaByLogin(login);
 	}
 	
 	public Pessoa getPessoaByLoginAndSenha(String login, String senha){

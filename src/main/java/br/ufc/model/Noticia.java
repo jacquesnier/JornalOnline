@@ -36,6 +36,7 @@ public class Noticia {
 	private String subtitulo;
 	
 	@NotEmpty
+	@Column(columnDefinition="text")
 	private String conteudo;
 	
 	@NotNull
@@ -50,7 +51,7 @@ public class Noticia {
 			referencedColumnName="secao_id")
 	private Secao secao;
 	
-	@OneToMany(mappedBy = "noticia")
+	@OneToMany(mappedBy = "noticia", cascade = CascadeType.REMOVE)
 	private List<Comentario> comentarios;
 	
 	private String foto;
