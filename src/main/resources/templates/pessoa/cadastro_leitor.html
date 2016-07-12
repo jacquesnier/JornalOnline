@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+<title>Jornal o Gordo</title>
+
+<!-- CSS  -->
+<link th:href="@{/webjars/font-awesome/4.6.3/css/font-awesome.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/materialize/0.97.6/bin/materialize.css}"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+</head>
+<body>
+	<nav class=" light-blue darken-1" role="navigation">
+		<div class="nav-wrapper container">
+			<a id="logo-container" th:href="@{/}" class="brand-logo center">Jornal
+				o Gordo</a>
+			<ul class="right hide-on-med-and-down">
+				<li class="active"><a href="#">Cadastre-se</a></li>
+			</ul>
+
+			<ul id="nav-mobile" class="side-nav">
+				<li><a href="#">Navbar Link</a></li>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i
+				class="material-icons">menu</i></a>
+		</div>
+	</nav>
+
+	<!-- Modal do Login -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h5 class="center">Login</h5>
+			<div class="row">
+				<div class="col s12 m12">
+					<form class="col s12">
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="email" type="email" class="validate" /> <label
+									for="email"
+									data-error="Digite um email válido ex: aluno@site.com"
+									data-success="right">Email</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="password" type="password" class="validate" /> <label
+									for="password">Senha</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<button class="btn waves-effect waves-light center" type="submit"
+								name="action">Login</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!"
+				class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="section">
+			<!--   Icon Section   -->
+			<div class="row">
+				<div class="col s12 m1">
+					<i class="large material-icons">person_pin</i>
+				</div>
+
+				<div class="col s12 m6">
+					<h2>Cadastro Leitor</h2>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col s12 m12">
+					<form class="col s12" enctype="multipart/form-data"
+						th:action="@{/pessoa/leitor/add}" method="post"
+						th:object="${leitor}">
+
+						<div class="file-field input-field">
+							<div class="btn">
+								<span>Adicionar Foto</span> 
+								<input type="file" name="foto_pessoa"/>
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text" />
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="first_name" type="text" class="validate"
+									th:field="*{nome}" /> <label for="first_name">Nome</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="email" type="email" class="validate"
+									th:field="*{email}" /> <label for="email"
+									data-error="Digite um email válido ex: aluno@site.com"
+									data-success="right">Email</label>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="login" type="text" class="validate"
+									th:field="*{login}" /> <label for="login">login</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="password" type="password" class="validate"
+									th:field="*{senha}" /> <label for="password">Senha</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">
+								Cadastrar<i class="material-icons right">send</i>
+							</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+
+			<br /> <br />
+
+			<div class="section"></div>
+		</div>
+	</div>
+
+	<footer class="page-footer orange">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">Entre em contato conosco</h5>
+					<ul>
+						<li><a class="white-text"
+							href="https://www.facebook.com/jacques.nier">Facebook</a></li>
+						<li><a class="white-text" href="#!">jacquesnier@gmail.com</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				Desenvolvido por <a class="orange-text text-lighten-3"
+					href="http://github.com/jacquesnier">Jacques Nier</a>
+			</div>
+		</div>
+	</footer>
+
+
+	<script th:src="@{/webjars/materialize/0.97.6/bin/materialize.js}"></script>
+	<script
+		th:src="@{/webjars/materialize/0.97.6/dist/js/materialize.min.js}"></script>
+	<script th:src="@{/webjars/jquery/2.2.4/dist/jquery.js}"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+	<script>
+
+  $(document).ready(function(){
+     $('.modal-trigger').leanModal();
+  });
+
+  </script>
+
+</body>
+</html>

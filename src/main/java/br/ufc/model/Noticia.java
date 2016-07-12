@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import javax.persistence.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -35,6 +36,7 @@ public class Noticia {
 	private String subtitulo;
 	
 	@NotEmpty
+	@Column(columnDefinition="text")
 	private String conteudo;
 	
 	@NotNull
@@ -49,7 +51,7 @@ public class Noticia {
 			referencedColumnName="secao_id")
 	private Secao secao;
 	
-	@OneToMany(mappedBy = "noticia")
+	@OneToMany(mappedBy = "noticia", cascade = CascadeType.REMOVE)
 	private List<Comentario> comentarios;
 	
 	private String foto;

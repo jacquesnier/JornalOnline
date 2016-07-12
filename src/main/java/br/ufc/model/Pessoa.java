@@ -26,9 +26,6 @@ public class Pessoa {
 	private String nome;
 
 	@NotEmpty
-	private String descricao;
-
-	@NotEmpty
 	@Column(unique = true)
 	private String login;
 
@@ -55,14 +52,6 @@ public class Pessoa {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public String getLogin() {

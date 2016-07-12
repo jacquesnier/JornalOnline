@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -22,11 +24,20 @@ public class Classificado {
 	@NotEmpty
 	private String conteudo;
 	
-	@NotEmpty
+	@NotNull
 	private Float preco;
 	
 	private String telefone;
 	
+	@OneToOne(mappedBy = "classificado")
+	private Oferta melhorOferta;
+	
+	public Oferta getMelhorOferta() {
+		return melhorOferta;
+	}
+	public void setMelhorOferta(Oferta melhorOferta) {
+		this.melhorOferta = melhorOferta;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +67,5 @@ public class Classificado {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-		
+	}		
 }

@@ -7,7 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -18,7 +20,7 @@ public class Comentario {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotEmpty
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="pessoa_id",
 			referencedColumnName="pessoa_id")
@@ -27,6 +29,7 @@ public class Comentario {
 	@NotEmpty
 	private String conteudo;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="noticia_id")
 	private Noticia noticia;
@@ -39,6 +42,13 @@ public class Comentario {
 	}
 	public Pessoa getAutor() {
 		return autor;
+	}
+	
+	public Noticia getNoticia() {
+		return noticia;
+	}
+	public void setNoticia(Noticia noticia) {
+		this.noticia = noticia;
 	}
 	public void setAutor(Pessoa autor) {
 		this.autor = autor;
