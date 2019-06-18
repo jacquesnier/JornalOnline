@@ -6,9 +6,9 @@ Tecnologias Utilizadas:
     - Java
     - Spring Boot
     - Hibernate
-    -PostgreSQL
+    - PostgreSQL
     
  - FontEnd
-  - Materialize CSS
-  - Thymeleaf
-  - HTML5
+    - Materialize CSS
+    - Thymeleaf
+    - HTML5
