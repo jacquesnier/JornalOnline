@@ -8,7 +8,7 @@ Tecnologias Utilizadas:
     - Hibernate
     -PostgreSQL
     
- -FontEnd
+ - FontEnd
   - Materialize CSS
   - Thymeleaf
   - HTML5
