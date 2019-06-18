@@ -1,4 +1,4 @@
-# Projeto Jornal do Gordo
+# Jornal do Gordo
 
 <img src="https://upload.wikimedia.org/wikipedia/pt/c/c2/Peter_Griffin.png" width="150" alt="logo">
 
