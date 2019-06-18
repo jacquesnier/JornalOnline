@@ -1,7 +1,7 @@
 # Projeto Jornal do Gordo
 
+<img src="https://upload.wikimedia.org/wikipedia/pt/c/c2/Peter_Griffin.png" width="150" alt="logo">
 
-![logo](https://upload.wikimedia.org/wikipedia/pt/c/c2/Peter_Griffin.png)
 
 
 Projeto desenvolvido para a disciplina de programação para Web. Implementação de um Jornal online.
