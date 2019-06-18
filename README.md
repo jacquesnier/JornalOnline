@@ -1,4 +1,4 @@
-# ProjetoJornalWEB
+# Projeto Jornal do Gordo
 
 Projeto desenvolvido para a disciplina de programação para Web. Implementação de um Jornal online.
 Tecnologias Utilizadas:
