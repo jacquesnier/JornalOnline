@@ -13,4 +13,4 @@ Tecnologias Utilizadas:
     - Thymeleaf
     - HTML5
     
-    ![alt logotipo](https://upload.wikimedia.org/wikipedia/pt/c/c2/Peter_Griffin.png)
+    ![alt logotipo](https://upload.wikimedia.org/wikipedia/pt/c/c2/Peter_Griffin.png | width=50) 
