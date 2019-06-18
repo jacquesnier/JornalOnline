@@ -13,4 +13,4 @@ Tecnologias Utilizadas:
     - Thymeleaf
     - HTML5
     
-    ![alt logotipo](/Diagrama/Modelo%20de%20Entidades.png)
+    ![alt logotipo](https://upload.wikimedia.org/wikipedia/pt/c/c2/Peter_Griffin.png)
