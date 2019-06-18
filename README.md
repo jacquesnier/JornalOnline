@@ -12,3 +12,5 @@ Tecnologias Utilizadas:
     - Materialize CSS
     - Thymeleaf
     - HTML5
+    
+    ![alt logotipo](/Diagrama/Modelo%20de%20Entidades.png)
