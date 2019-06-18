@@ -12,5 +12,4 @@ Tecnologias Utilizadas:
     - Materialize CSS
     - Thymeleaf
     - HTML5
-    
-    ![alt logotipo](https://upload.wikimedia.org/wikipedia/pt/c/c2/Peter_Griffin.png | width=50) 
+    <img src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
